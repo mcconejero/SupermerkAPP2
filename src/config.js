@@ -39,7 +39,7 @@ const config = {
   test: { },
   development: {
     mongo: {
-      uri: 'mongodb://localhost/super-merk-app-2-dev',
+      uri: 'mongodb://mario:mario1234@ds163825.mlab.com:63825/supermerkapp2',
       options: {
         debug: true
       }
@@ -49,7 +49,7 @@ const config = {
     ip: process.env.IP || undefined,
     port: process.env.PORT || 8080,
     mongo: {
-      uri: process.env.MONGODB_URI || 'mongodb://localhost/super-merk-app-2'
+      uri: process.env.MONGODB_URI || 'mongodb://mario:mario1234@ds163825.mlab.com:63825/supermerkapp2'
     }
   }
 }
