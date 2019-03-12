@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="createRecurso()">
+  <div fxLayout="column" fxLayoutAlign="space-around">
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Titulo" [formControl]="form.controls['title']">
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Autor" [formControl]="form.controls['autor']">
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Año" [formControl]="form.controls['anyo']">
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Contenido" [formControl]="form.controls['content']">
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field>
+        <mat-select placeholder="Tipo" [formControl]="form.controls['typeId']">
+          <mat-option *ngFor="let t of typeId" [value]="t.id">
+            {{t.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field>
+        <mat-select placeholder="Categoría" [formControl]="form.controls['categoryId']">
+          <mat-option *ngFor="let c of categoryId" [value]="c.id">
+            {{c.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Crear</button>
+  </div>
+</form>

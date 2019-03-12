@@ -1,0 +1,10 @@
+
+<div fxLayout="row" fxLayoutAlign="center center">
+  <h2>Editar Categoria </h2>
+</div>
+<div fxLayout="column"  fxLayoutAlign="center center">
+    <mat-form-field class="example-full-width">
+    <input matInput placeholder="name" [(ngModel)]="category.name">
+  </mat-form-field>   
+  <button mat-raised-button color="primary" (click)="saveCategory()">Crear</button>
+</div>

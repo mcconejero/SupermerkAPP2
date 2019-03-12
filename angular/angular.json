@@ -3,39 +3,43 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SuperMerkAPP2": {
+    "primer": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
-      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/SuperMerkAPP2",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
+            "polyfills": "src/polyfills.ts",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
-              "src/custom-theme.scss",
-              "src/styles.css"
+              "node_modules/quill/dist/quill.snow.css",
+              "node_modules/quill/dist/quill.bubble.css",
+              "node_modules/dragula/dist/dragula.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/angular-calendar/scss/angular-calendar.scss",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "src/assets/fonts/pe/css/pe-icon-set-weather.css",
+              "src/assets/fonts/data-table/icons.css",
+              "src/assets/styles/highlightjs/material-light.css",
+              "src/assets/styles/app.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js",
+              "node_modules/chart.js/dist/Chart.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -45,11 +49,10 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [
+              "fileReplacements": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -58,34 +61,47 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SuperMerkAPP2:build"
+            "browserTarget": "primer:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SuperMerkAPP2:build:production"
+              "browserTarget": "primer:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SuperMerkAPP2:build"
+            "browserTarget": "primer:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
+            "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.css"
+            "scripts": [
+              "node_modules/hammerjs/hammer.min.js",
+              "node_modules/chart.js/dist/Chart.bundle.min.js"
             ],
-            "scripts": [],
+            "styles": [
+              "node_modules/quill/dist/quill.snow.css",
+              "node_modules/quill/dist/quill.bubble.css",
+              "node_modules/dragula/dist/dragula.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/angular-calendar/scss/angular-calendar.scss",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "src/assets/fonts/pe/css/pe-icon-set-weather.css",
+              "src/assets/fonts/data-table/icons.css",
+              "src/assets/styles/highlightjs/material-light.css",
+              "src/assets/styles/app.scss"
+            ],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/favicon.ico"
             ]
           }
         },
@@ -103,27 +119,24 @@
         }
       }
     },
-    "SuperMerkAPP2-e2e": {
-      "root": "e2e/",
+    "primer-e2e": {
+      "root": "",
+      "sourceRoot": "",
       "projectType": "application",
-      "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "SuperMerkAPP2:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "SuperMerkAPP2:serve:production"
-            }
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "primer:serve"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]
@@ -132,5 +145,14 @@
       }
     }
   },
-  "defaultProject": "SuperMerkAPP2"
+  "defaultProject": "primer",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "app",
+      "styleext": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "app"
+    }
+  }
 }

@@ -1,0 +1,12 @@
+<form [formGroup]="form" (ngSubmit)="removeUsuario()">
+  <div fxLayout="column" fxLayoutAlign="space-around">
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+          <h3>Eliminar: <span id="name">'{{name}}'</span></h3>
+        <h2>Escriba ELIMINAR para borrar</h2>
+        <input matInput [formControl]="form.controls['eliminar']">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Eliminar</button>
+  </div>
+</form>

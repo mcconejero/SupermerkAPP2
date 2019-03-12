@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="editarUsuario()">
+  <div fxLayout="column" fxLayoutAlign="space-around">
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Nombre" [formControl]="form.controls['name']">
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Email" [formControl]="form.controls['email']">
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Número" [formControl]="form.controls['phone']">
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Notas" [formControl]="form.controls['notes']">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Editar</button>
+  </div>
+</form>
