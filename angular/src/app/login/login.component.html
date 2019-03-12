@@ -1,0 +1,15 @@
+<mat-tab-group id="centrado">
+  <mat-tab label="Log In" id="tab">
+    <div class="example-container">
+      <mat-form-field>
+        <input matInput placeholder="Email" [(ngModel)]="email" name="email">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Contraseña" [(ngModel)]="password" name="password" [type]="hide ? 'text' : 'password'">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="doLogin()">Entrar</button>
+      <p id="link">¿No tienes cuenta?<a routerLink="/registro">Registrate</a></p>
+    </div>
+  </mat-tab>
+</mat-tab-group>
