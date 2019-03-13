@@ -4,10 +4,7 @@ const productSchema = new Schema({
   name: {
     type: String
   },
-  category: {
-    type: Schema.ObjectId,
-    ref: 'Category'
-  }
+
 }, {
   timestamps: true,
   toJSON: {
@@ -22,7 +19,6 @@ productSchema.methods = {
       // simple view
       id: this.id,
       name: this.name,
-      category: this.category,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }

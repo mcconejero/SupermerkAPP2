@@ -6,7 +6,7 @@ import { schema } from './model'
 export Market, { schema } from './model'
 
 const router = new Router()
-const { name, product, latlong } = schema.tree
+const { name, category, latlong } = schema.tree
 
 /**
  * @api {post} /markets Create market
@@ -20,7 +20,7 @@ const { name, product, latlong } = schema.tree
  * @apiError 404 Market not found.
  */
 router.post('/',
-  body({ name, product, latlong }),
+  body({ name, category, latlong }),
   create)
 
 /**
@@ -59,7 +59,7 @@ router.get('/:id',
  * @apiError 404 Market not found.
  */
 router.put('/:id',
-  body({ name, product, latlong }),
+  body({ name, category, latlong }),
   update)
 
 /**

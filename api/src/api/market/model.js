@@ -4,9 +4,9 @@ const marketSchema = new Schema({
   name: {
     type: String
   },
-  product: {
+  category: {
     type: Schema.ObjectId,
-    ref: 'Product'
+    ref: 'Category'
   },
   latlong: {
     type: String
@@ -22,10 +22,9 @@ const marketSchema = new Schema({
 marketSchema.methods = {
   view (full) {
     const view = {
-      // simple view
       id: this.id,
       name: this.name,
-      product: this.product,
+      category: this.category,
       latlong: this.latlong,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt

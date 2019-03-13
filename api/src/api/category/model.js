@@ -6,6 +6,10 @@ const categorySchema = new Schema({
   },
   message: {
     type: String
+  },
+  product: {
+    type: Schema.ObjectId,
+    ref: 'Product'
   }
 }, {
   timestamps: true,
@@ -18,17 +22,17 @@ const categorySchema = new Schema({
 categorySchema.methods = {
   view (full) {
     const view = {
-      // simple view
       id: this.id,
       name: this.name,
       message: this.message,
+      product: this.product,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt
     }
 
     return full ? {
       ...view
-      // add properties for a full view
+      
     } : view
   }
 }

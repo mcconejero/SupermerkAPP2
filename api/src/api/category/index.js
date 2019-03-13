@@ -6,7 +6,7 @@ import { schema } from './model'
 export Category, { schema } from './model'
 
 const router = new Router()
-const { name, message } = schema.tree
+const { name, message, product } = schema.tree
 
 /**
  * @api {post} /categories Create category
@@ -19,7 +19,7 @@ const { name, message } = schema.tree
  * @apiError 404 Category not found.
  */
 router.post('/',
-  body({ name, message }),
+  body({ name, message, product }),
   create)
 
 /**
@@ -57,7 +57,7 @@ router.get('/:id',
  * @apiError 404 Category not found.
  */
 router.put('/:id',
-  body({ name, message }),
+  body({ name, message, product }),
   update)
 
 /**

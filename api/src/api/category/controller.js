@@ -1,22 +1,36 @@
 import { success, notFound } from '../../services/response/'
 import { Category } from '.'
 
-export const create = ({ bodymen: { body } }, res, next) =>
-  Category.create(body)
-    .then((category) => category.view(true))
+export const create = ({ bodymen: { body } }, res, next) => {
+  var categoryG;
+  await Category.create(body)
+    .then((category) => {
+      categoryG = category;
+      category.view(true)
+    })
     .then(success(res, 201))
     .catch(next)
 
-export const index = ({ querymen: { query, select, cursor } }, res, next) =>
-  Category.count(query)
-    .then(count => Category.find(query, select, cursor)
-      .then((categories) => ({
-        count,
-        rows: categories.map((category) => category.view())
-      }))
-    )
-    .then(success(res))
+  await Market.findById(categoryG.market)
+    .then(market => {
+      
+      market.categories.push(categoryG)
+      return market.save();
+
+    })
+    .then(success(res, 201))
     .catch(next)
+}
+
+export const index = ({ params } , res, next) => {
+  Market.findById(params.id)
+    .populate('categories')
+    .then(market => {
+      return market.categories;
+    })
+    .then(success(res, 200))
+    .catch(next)
+    }
 
 export const show = ({ params }, res, next) =>
   Category.findById(params.id)
