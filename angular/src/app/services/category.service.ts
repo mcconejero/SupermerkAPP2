@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from "src/environments/environment.prod";
 import { Category } from "../interfaces/category-response";
 import { CategoryDto } from "../dto/create-category.dto";
+import { ListApiResponse } from "../interfaces/listApi";
 
 const categoriasUrl = `${environment.apiUrl}/categories`;
 
@@ -14,7 +15,7 @@ const categoriasUrl = `${environment.apiUrl}/categories`;
   export class CategoryService {
 constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  getAllCategorias(): Observable<Category[]> {
+  getAllCategorias(): Observable<ListApiResponse> {
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -23,7 +24,7 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
       })
     };
 
-    return this.http.get<Category[]>(`${categoriasUrl}`, requestOptions);
+    return this.http.get<ListApiResponse>(`${categoriasUrl}`, requestOptions);
    }
 
    categoryCreate(crearCategoriaDto: CategoryDto):Observable<Category>{

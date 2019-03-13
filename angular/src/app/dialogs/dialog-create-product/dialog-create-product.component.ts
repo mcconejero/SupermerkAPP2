@@ -23,7 +23,6 @@ import { CategoryService } from "src/app/services/category.service";
       @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     ngOnInit() {
-        this.getCategorias();
         this.form =  this.fb.group ( {
             title: [null , Validators.compose ( [ Validators.required ] )],
             autor: [null , Validators.compose ( [ Validators.required ] )],
@@ -44,12 +43,12 @@ import { CategoryService } from "src/app/services/category.service";
             });
     }
 
-    getCategorias() {
+    /*getCategorias() {
         this.categoriasService.getAllCategorias().subscribe(categoryList => {
             this.categoryId = categoryList;            
           }, error => {
             console.log('Error. No recibe datos.');
         });
-    }
+    }*/
     
 }
