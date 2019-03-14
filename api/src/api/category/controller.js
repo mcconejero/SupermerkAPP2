@@ -18,16 +18,17 @@ export const create = async ({ bodymen: { body } }, res, next) => {
       .catch(next)
 }
 
-export const index = ({ querymen: { query, select, cursor } }, res, next) =>
-  Category.count(query)
-    .then(count => Category.find(query, select, cursor)
-      .then((categories) => ({
-        count,
-        rows: categories.map((category) => category.view(true))
-      }))
-    )
-    .then(success(res))
-    .catch(next)
+export const index = ({ params, querymen: { query, select, cursor } }, res, next) => {
+  Category
+  .find(query, select, cursor)
+  .populate('marketId', 'name')
+  .then((result) => ({
+      count: result.length,
+      rows: result
+  }))
+  .then(success(res))
+  .catch(next)
+}
 
 export const show = ({ params }, res, next) =>
   Category.findById(params.id)
