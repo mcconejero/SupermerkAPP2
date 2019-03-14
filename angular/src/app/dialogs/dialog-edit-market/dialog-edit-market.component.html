@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="saveMarket()">
+  <div fxLayout="column" fxLayoutAlign="space-around">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Name" [formControl]="form.controls['name']">
+      </mat-form-field>
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Location" [formControl]="form.controls['latlong']">
+      </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Editar</button>
+  </div>
+</form>

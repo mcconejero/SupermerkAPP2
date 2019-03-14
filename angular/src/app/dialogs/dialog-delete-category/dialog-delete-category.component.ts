@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { CategoryService } from 'src/app/services/category.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -11,21 +11,21 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class DialogDeleteCategoryComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private categoriaService:CategoryService,
+  constructor(private categoriaService: CategoryService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  public dialogRef: MatDialogRef<DialogDeleteCategoryComponent>) { }
+    public dialogRef: MatDialogRef<DialogDeleteCategoryComponent>) { }
 
   ngOnInit() {
-    this.form = new FormGroup( {
-      eliminar: new FormControl ('', [Validators.pattern("ELIMINAR") ,Validators.required])
-      } );
+    this.form = new FormGroup({
+      eliminar: new FormControl('', [Validators.pattern("ELIMINAR"), Validators.required])
+    });
   }
 
   removeCategoria() {
     this.categoriaService.eliminarCategoria(this.data.id).subscribe(categorias => {
-        this.dialogRef.close();
-      }, error => {
-          console.log(error);
-      });
+      this.dialogRef.close();
+    }, error => {
+      console.log(error);
+    });
   }
 }

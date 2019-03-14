@@ -28,7 +28,7 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
     return this.http.get<ListApiResponse>(`${productsUrl}`, requestOptions);
    }
 
-  createRecursos(recursoCreate: Product): Observable<ProductResponse> {
+  createProducts(productCreate: Product): Observable<ProductResponse> {
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -37,10 +37,10 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
       })
     };
 
-    return this.http.post<ProductResponse>(`${productsUrl}`, recursoCreate, requestOptions);
+    return this.http.post<ProductResponse>(`${productsUrl}`, productCreate, requestOptions);
   }
 
-  editRecurso(recursoEditadoDto: RecursoEditado, id: number): Observable<ProductResponse> {
+  editProducts(product: Product, id: number): Observable<ProductResponse> {
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -49,10 +49,10 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
       })
     };
 
-    return this.http.put<ProductResponse>(`${productsUrl}/${id}`, recursoEditadoDto, requestOptions);
+    return this.http.put<ProductResponse>(`${productsUrl}/${id}`, product, requestOptions);
 }
 
-  deleteRecurso(id: number): Observable<Product[]>{
+  deleteProducts(id: number): Observable<Product[]>{
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

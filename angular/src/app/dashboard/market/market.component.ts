@@ -3,6 +3,9 @@ import { MatSnackBar, MatDialog, MatTableDataSource, MatPaginator } from '@angul
 import { MarketService } from 'src/app/services/market.service';
 import { Market } from 'src/app/model/market';
 import { ListApiResponse } from 'src/app/interfaces/listApi';
+import { DialogCreateMarketComponent } from 'src/app/dialogs/dialog-create-market/dialog-create-market.component';
+import { DialogEditMarketComponent } from 'src/app/dialogs/dialog-edit-market/dialog-edit-market.component';
+import { DialogRemoveMarketComponent } from 'src/app/dialogs/dialog-delete-market/dialog-delete-market.component';
 
 @Component({
   selector: 'app-market',
@@ -42,29 +45,26 @@ export class MarketComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  /*openDialogCrearCategoria(){
-    const dialogNuevaCategoria = this.dialog.open(DialogCreateCategoryComponent);
+  openDialogCrearMarket(){
+    const dialogNuevaCategoria = this.dialog.open(DialogCreateMarketComponent);
     
     dialogNuevaCategoria.afterClosed().subscribe(resultado =>{
-      this.showCategory();
+      this.getListaMarket();
     })
   }
   
-  openDialogDeleteCategorias(id: number) {
-    const dialogoRemoveRecurso = this.dialog.open(DialogRemoveCategoriyComponent, {data: {id: id}});
+  openDialogDeleteMarket(id: number) {
+    const dialogoRemoveMarket = this.dialog.open(DialogRemoveMarketComponent, {data: {id: id}});
   
-    dialogoRemoveRecurso.afterClosed().subscribe(result => {
-      this.getListaCategorias('Recurso eliminado');
+    dialogoRemoveMarket.afterClosed().subscribe(result => {
+      this.getListaMarket();
     });
   }
   
-  openDialogEditarCategoria(element: Category){
-    const dialogEditarCategoria = this.dialog.open(DialogEditCategoryComponent,{
+  openDialogEditarMarket(element: Market){
+    const dialogEditMarket = this.dialog.open(DialogEditMarketComponent,{
       width:'30%',
       data: {category:element},
     });
-    dialogEditarCategoria.afterClosed().subscribe(result => {
-      this.getListaCategorias('Categoria Modificada');
-    });
-  }*/
+  }
 }

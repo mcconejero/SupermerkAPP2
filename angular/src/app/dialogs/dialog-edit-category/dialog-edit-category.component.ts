@@ -19,6 +19,7 @@ export class DialogEditCategoryComponent implements OnInit {
   ListApi: ListApiResponse;
   category: Category[];
   public form: FormGroup;
+  
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
     private categoryService: CategoryService,

@@ -4,6 +4,9 @@ import { ProductService } from 'src/app/services/product.service';
 import { MatSnackBar, MatDialog, MatTableDataSource, MatPaginator } from '@angular/material';
 import { FormBuilder } from '@angular/forms';
 import { ListApiResponse } from 'src/app/interfaces/listApi';
+import { DialogCreateProductComponent } from 'src/app/dialogs/dialog-create-product/dialog-create-product.component';
+import { DialogEditProductComponent } from 'src/app/dialogs/dialog-edit-product/dialog-edit-product.component';
+import { DialogDeleteProductComponent } from 'src/app/dialogs/dialog-delete-product/dialog-delete-product.component';
 
 @Component({
   selector: 'app-product',
@@ -44,28 +47,27 @@ applyFilter(filterValue: string) {
   this.dataSource.filter = filterValue.trim().toLowerCase();
 }
 
-/*openDialogNuevoRecurso() {
+openDialogNewProduct() {
   const dialogoNuevoRecurso = this.dialog.open(DialogCreateProductComponent);
 
   dialogoNuevoRecurso.afterClosed().subscribe(result => {
-    this.getListaRecursos('Recurso creado');
+    this.getListaProducts();
   });
 }
 
-openDialogEditarRecurso(res: RecursoCreateResponse) {
-  const dialogoEditRecurso = this.dialog.open(DialogEditProductComponent, {data: {resource: res}});
-
-  dialogoEditRecurso.afterClosed().subscribe(result => {
-    this.getListaRecursos('Recurso editado');
+openDialogEditProduct(element: Product) {
+  const dialogEditCategory = this.dialog.open(DialogEditProductComponent,{
+    width:'30%',
+    data: {category:element},
   });
 }
 
-openDialogEliminarRecurso(id: number) {
+openDialogDeleteProduct(id: number) {
   const dialogoRemoveRecurso = this.dialog.open(DialogDeleteProductComponent, {data: {id: id}});
 
   dialogoRemoveRecurso.afterClosed().subscribe(result => {
-    this.getListaRecursos('Recurso eliminado');
+    this.getListaProducts();
   });
-}*/
+}
 }
 

@@ -50,13 +50,13 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
     return this.http.delete<Market>(`${marketsUrl}/${id}`, requestOptions);
   }
 
-  updateMarket(market: Market): Observable<Market>{
+  updateMarket(market: Market, id: string){
     const requestOptions ={
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.loginService.getToken()}`
       })
     };
-    return this.http.put<Market>(`${marketsUrl}/${market.id}`,market,requestOptions);
+    return this.http.put<Market>(`${marketsUrl}/${id}`, market, requestOptions);
   }
 }

@@ -46,9 +46,9 @@ import { AppComponent } from './app.component';
 import { DialogCreateProductComponent } from './dialogs/dialog-create-product/dialog-create-product.component';
 import { DialogEditProductComponent } from './dialogs/dialog-edit-product/dialog-edit-product.component';
 import { DialogDeleteProductComponent } from './dialogs/dialog-delete-product/dialog-delete-product.component';
-import { DialogEditUsuarioComponent } from './dialogs/dialog-edit-usuario/dialog-edit-usuario.component';
-import { DialogRemoveUserComponent } from './dialogs/dialog-delete-user/dialog-delete-user.component';
-import { DialogCreateUserComponent } from './dialogs/dialog-create-user/dialog-create-user.component';
+import { DialogEditMarketComponent } from './dialogs/dialog-edit-market/dialog-edit-market.component';
+import { DialogRemoveMarketComponent } from './dialogs/dialog-delete-market/dialog-delete-market.component';
+import { DialogCreateMarketComponent } from './dialogs/dialog-create-market/dialog-create-market.component';
 import { DialogEditCategoryComponent } from './dialogs/dialog-edit-category/dialog-edit-category.component';
 import { DialogCreateCategoryComponent } from './dialogs/dialog-create-category/dialog-create-category.component';
 import { DialogDeleteCategoryComponent } from './dialogs/dialog-delete-category/dialog-delete-category.component';
@@ -67,7 +67,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
   declarations: [
     DialogCreateProductComponent,
-    DialogCreateUserComponent,
+    DialogCreateMarketComponent,
     DialogCreateCategoryComponent,
     AppComponent,
     HeaderComponent,
@@ -81,19 +81,19 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AccordionLinkDirective,
     AccordionDirective,
     DialogEditProductComponent,
-    DialogEditUsuarioComponent,
+    DialogEditMarketComponent,
     DialogEditCategoryComponent,
     DialogDeleteProductComponent,
-    DialogRemoveUserComponent,
+    DialogRemoveMarketComponent,
     DialogDeleteCategoryComponent,
   ],
   entryComponents: [
     DialogCreateProductComponent,
     DialogEditProductComponent,
     DialogDeleteProductComponent,
-    DialogCreateUserComponent,
-    DialogEditUsuarioComponent,
-    DialogRemoveUserComponent,
+    DialogCreateMarketComponent,
+    DialogEditMarketComponent,
+    DialogRemoveMarketComponent,
     DialogCreateCategoryComponent,
     DialogEditCategoryComponent,
     DialogDeleteCategoryComponent,
