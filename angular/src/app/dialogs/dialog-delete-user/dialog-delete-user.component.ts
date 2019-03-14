@@ -2,7 +2,7 @@ import { Component, OnInit, Inject} from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { FormGroup, Validators, FormBuilder, FormControl } from "@angular/forms";
 
-import { RecursoCreateResponse } from "src/app/interfaces/product-response";
+import { ProductResponse } from "src/app/interfaces/product-response";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
@@ -11,7 +11,7 @@ import { UserService } from "src/app/services/user.service";
     styleUrls: ['./dialog-delete-user.component.scss']
   })
   export class DialogRemoveUserComponent implements OnInit {
-    resource: RecursoCreateResponse;
+    resource: ProductResponse;
     public form: FormGroup;
   
     constructor(private fb: FormBuilder, private usuarioService: UserService, public dialogRef: MatDialogRef<DialogRemoveUserComponent>,

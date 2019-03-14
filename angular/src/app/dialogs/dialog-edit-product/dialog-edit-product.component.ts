@@ -4,7 +4,7 @@ import { ProductService } from "../../services/product.service";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { Router } from "@angular/router";
-import { RecursoCreateResponse } from "src/app/interfaces/product-response";
+import { ProductResponse } from "src/app/interfaces/product-response";
 import { CategoryService } from "src/app/services/category.service";
 import { Category } from "src/app/interfaces/category-response";
 
@@ -20,7 +20,7 @@ import { Category } from "src/app/interfaces/category-response";
     content: string;
     categoryId: Category[]
     public form: FormGroup;
-    resource: RecursoCreateResponse;
+    resource: ProductResponse;
   
     constructor(private fb: FormBuilder, private router: Router,
         private recursosService: ProductService, private categoriasService: CategoryService, public dialogRef: MatDialogRef<DialogEditProductComponent>,
@@ -38,7 +38,7 @@ import { Category } from "src/app/interfaces/category-response";
           });
     }
     
-    editarRecurso() {
+    /*editarRecurso() {
         const recursoCreate: Product = <Product>this.form.value;
         this.recursosService.editRecurso(recursoCreate, this.data.resource.id).subscribe(
             recursos => {
@@ -46,7 +46,7 @@ import { Category } from "src/app/interfaces/category-response";
             }, error => {
                 console.log(error);
             });
-    }
+    }*/
 
     /*getCategorias() {
         this.categoriasService.getAllCategorias().subscribe(categoryList => {

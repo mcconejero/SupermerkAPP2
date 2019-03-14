@@ -1,17 +1,9 @@
 export class Product {
-    title: string;
-    autor: string;
-    anyo: number;
-    content: string;
-    typeId: number;
-    categoryId: number;
+    name: string;
+    categoryId: string;
 
-    constructor(t: string, au: string, an: number, c: string, tI: number, cI: number) {
-        this.title = t;
-        this.autor = au;
-        this.anyo = an;
-        this.content = c;
-        this.typeId = tI;
+    constructor(n: string, cI: string) {
+        this.name = n;
         this.categoryId = cI;
     }
 }

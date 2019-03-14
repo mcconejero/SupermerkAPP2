@@ -1,10 +1,5 @@
-export interface RecursoCreateResponse {
+export interface ProductResponse {
     id: number;
-    title: string;
-    autor: string;
-    anyo: string;
-    content: string;
-    free:boolean;
-    typeId: number;
-    categoryId: number;
+    name: string;
+    categoryId: string;
 }

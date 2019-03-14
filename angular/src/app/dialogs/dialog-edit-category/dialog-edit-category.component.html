@@ -1,10 +1,24 @@
-
-<div fxLayout="row" fxLayoutAlign="center center">
-  <h2>Editar Categoria </h2>
-</div>
-<div fxLayout="column"  fxLayoutAlign="center center">
-    <mat-form-field class="example-full-width">
-    <input matInput placeholder="name" [(ngModel)]="category.name">
-  </mat-form-field>   
-  <button mat-raised-button color="primary" (click)="saveCategory()">Crear</button>
-</div>
+<form [formGroup]="form" (ngSubmit)="saveCategory()">
+  <div fxLayout="column" fxLayoutAlign="space-around">
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Name" [formControl]="form.controls['name']">
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Message" [formControl]="form.controls['message']">
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <mat-select placeholder="Supermarket" [formControl]="form.controls['marketId']">
+          <mat-option *ngFor="let m of marketId" [value]="m.id">
+            {{m.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Editar</button>
+  </div>
+</form>

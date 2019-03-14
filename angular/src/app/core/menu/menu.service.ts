@@ -22,14 +22,8 @@ export interface Menu {
 
 const MENUITEMS = [
   {
-    state: 'products',
-    name: 'PRODUCTS',
-    type: 'link',
-    icon: 'dns'
-  },
-  {
-    state: 'users',
-    name: 'USERS',
+    state: 'markets',
+    name: 'SUPERMARKETS',
     type: 'link',
     icon: 'supervisor_account'
   },
@@ -38,6 +32,12 @@ const MENUITEMS = [
     name: 'CATEGORIES',
     type: 'link',
     icon: 'category'
+  },
+  {
+    state: 'products',
+    name: 'PRODUCTS',
+    type: 'link',
+    icon: 'dns'
   }
 ];
 

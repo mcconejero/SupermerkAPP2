@@ -8,12 +8,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: './dialog-delete-category.component.html',
   styleUrls: ['./dialog-delete-category.component.scss']
 })
-export class DialogRemoveCategoriyComponent implements OnInit {
+export class DialogDeleteCategoryComponent implements OnInit {
   public form: FormGroup;
 
   constructor(private categoriaService:CategoryService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  public dialogRef: MatDialogRef<DialogRemoveCategoriyComponent>) { }
+  public dialogRef: MatDialogRef<DialogDeleteCategoryComponent>) { }
 
   ngOnInit() {
     this.form = new FormGroup( {

@@ -36,9 +36,7 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
       })
     };
 
-
     return this.http.post<Category>(`${categoriasUrl}`, crearCategoriaDto, requestOptions);
-
   }
 
   eliminarCategoria(id: number): Observable<Category> {
@@ -51,13 +49,13 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
     return this.http.delete<Category>(`${categoriasUrl}/${id}`, requestOptions);
   }
 
-  updateCategory(category: Category): Observable<Category>{
+  updateCategory(category: Category, id: string){
     const requestOptions ={
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.loginService.getToken()}`
       })
     };
-    return this.http.put<Category>(`${categoriasUrl}/${category.id}`,category,requestOptions);
+    return this.http.put<Category>(`${categoriasUrl}/${id}`, category, requestOptions);
   }
 }

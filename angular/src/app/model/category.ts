@@ -4,12 +4,12 @@ export class Category {
     id: number;
     name: string;
     message: string;
-    market: Market;
+    marketId: string;
 
-    constructor(i: number, n: string, m: string, ma: Market){
+    constructor(i: number, n: string, m: string, ma: string){
         this.id = i;
         this.name = n;
         this.message = m;
-        this.market = ma;
+        this.marketId = ma;
     }
 }

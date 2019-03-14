@@ -4,8 +4,9 @@ import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from "src/environments/environment.prod";
 import { Market } from "../model/market";
+import { ListApiResponse } from "../interfaces/listApi";
 
-const categoriasUrl = `${environment.apiUrl}/categories`;
+const marketsUrl = `${environment.apiUrl}/markets`;
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,7 @@ const categoriasUrl = `${environment.apiUrl}/categories`;
   export class MarketService {
 constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  getAllMarkets(): Observable<Market[]> {
+  getAllMarkets(): Observable<ListApiResponse> {
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -22,7 +23,7 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
       })
     };
 
-    return this.http.get<Market[]>(`${categoriasUrl}`, requestOptions);
+    return this.http.get<ListApiResponse>(`${marketsUrl}`, requestOptions);
    }
 
    marketCreate(market: Market):Observable<Market>{
@@ -35,7 +36,7 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
     };
 
 
-    return this.http.post<Market>(`${categoriasUrl}`, market, requestOptions);
+    return this.http.post<Market>(`${marketsUrl}`, market, requestOptions);
 
   }
 
@@ -46,7 +47,7 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
         'Authorization': `Bearer ${this.loginService.getToken()}`
       })
     };
-    return this.http.delete<Market>(`${categoriasUrl}/${id}`, requestOptions);
+    return this.http.delete<Market>(`${marketsUrl}/${id}`, requestOptions);
   }
 
   updateMarket(market: Market): Observable<Market>{
@@ -56,6 +57,6 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
         'Authorization': `Bearer ${this.loginService.getToken()}`
       })
     };
-    return this.http.put<Market>(`${categoriasUrl}/${market.id}`,market,requestOptions);
+    return this.http.put<Market>(`${marketsUrl}/${market.id}`,market,requestOptions);
   }
 }

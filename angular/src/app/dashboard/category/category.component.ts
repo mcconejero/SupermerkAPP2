@@ -4,7 +4,7 @@ import { MatSnackBar, MatDialog, MatTableDataSource, MatPaginator } from '@angul
 import { Category } from 'src/app/interfaces/category-response';
 import { DialogCreateCategoryComponent } from 'src/app/dialogs/dialog-create-category/dialog-create-category.component';
 import { DialogEditCategoryComponent } from 'src/app/dialogs/dialog-edit-category/dialog-edit-category.component';
-import { DialogRemoveCategoriyComponent } from 'src/app/dialogs/dialog-delete-category/dialog-delete-category.component';
+import { DialogDeleteCategoryComponent } from 'src/app/dialogs/dialog-delete-category/dialog-delete-category.component';
 import { ListApiResponse } from 'src/app/interfaces/listApi';
 
 const ELEMENT_DATA: Category[] = [];
@@ -35,7 +35,6 @@ export class CategoryComponent implements OnInit {
   this.CategoryResponse = this.ListApi.rows;
   this.dataSource = new MatTableDataSource<Category[]>(this.ListApi.rows);
       this.dataSource.paginator = this.paginator
-      console.log(this.CategoryResponse);
 
 },error =>{
   this.snackBar.open('Error al obtener categorias', 'Cerrar',{
@@ -43,22 +42,6 @@ export class CategoryComponent implements OnInit {
   });
 });
 }
-/*getCategorias() {
-  this.categoryService.getAllCategorias().subscribe(listaCategorias => {
-    this.dataSource.data = listaCategorias;
-
-  }, error => {
-    console.log('Error');
-  });
-}
-
-showCategory(){
-  this.categoryService.getAllCategorias().subscribe(categoryList =>{
-    this.dataSource.data = categoryList;
-  }, error =>{
-    console.log('Error, no ha recibido categorias');
-  })
-}*/
 
 applyFilter(filterValue: string) {
   this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -72,12 +55,16 @@ openDialogCrearCategoria(){
   })
 }
 
-openDialogDeleteCategorias(id: number) {
-  const dialogoRemoveRecurso = this.dialog.open(DialogRemoveCategoriyComponent, {data: {id: id}});
+openDialogDeleteCategoria(id: number) {
+  const dialogDeleteCategory = this.dialog.open(DialogDeleteCategoryComponent, {data: {id: id}});
+
+  dialogDeleteCategory.afterClosed().subscribe(resultado =>{
+    this.getListaCategorias();
+  })
 }
 
 openDialogEditarCategoria(element: Category){
-  const dialogEditarCategoria = this.dialog.open(DialogEditCategoryComponent,{
+  const dialogEditCategory = this.dialog.open(DialogEditCategoryComponent,{
     width:'30%',
     data: {category:element},
   });

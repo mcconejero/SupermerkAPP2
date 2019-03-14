@@ -1,8 +1,6 @@
-import { Market } from "../model/market";
-
 export interface Category {
-    id: number;
+    id: string;
     name: string;
     message: string;
-    market: Market;
+    marketId: string;
 }

@@ -51,7 +51,7 @@ import { DialogRemoveUserComponent } from './dialogs/dialog-delete-user/dialog-d
 import { DialogCreateUserComponent } from './dialogs/dialog-create-user/dialog-create-user.component';
 import { DialogEditCategoryComponent } from './dialogs/dialog-edit-category/dialog-edit-category.component';
 import { DialogCreateCategoryComponent } from './dialogs/dialog-create-category/dialog-create-category.component';
-import { DialogRemoveCategoriyComponent } from './dialogs/dialog-delete-category/dialog-delete-category.component';
+import { DialogDeleteCategoryComponent } from './dialogs/dialog-delete-category/dialog-delete-category.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -85,7 +85,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DialogEditCategoryComponent,
     DialogDeleteProductComponent,
     DialogRemoveUserComponent,
-    DialogRemoveCategoriyComponent,
+    DialogDeleteCategoryComponent,
   ],
   entryComponents: [
     DialogCreateProductComponent,
@@ -96,7 +96,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DialogRemoveUserComponent,
     DialogCreateCategoryComponent,
     DialogEditCategoryComponent,
-    DialogRemoveCategoriyComponent,
+    DialogDeleteCategoryComponent,
   ],
   imports: [
     BrowserModule,
