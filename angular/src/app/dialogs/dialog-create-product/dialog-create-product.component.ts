@@ -14,19 +14,23 @@ import { ListApiResponse } from "src/app/interfaces/listApi";
   })
   export class DialogCreateProductComponent implements OnInit {
     name: string;
-    categoryId: Category[];
+    categoryId: string;
     product: Product[];
+    categories: Category[];
     ListApi: ListApiResponse;
     public form: FormGroup;
   
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder, private productService: ProductService, private categoriesService: CategoryService, public dialogRef: MatDialogRef<DialogCreateProductComponent>,) { }
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+    private fb: FormBuilder,
+    private productService: ProductService,
+    private categoriesService: CategoryService,
+    public dialogRef: MatDialogRef<DialogCreateProductComponent>,) { }
 
     ngOnInit() {
         this.getCategories();
-        this.product = this.data.product;
         this.form =  this.fb.group ( {
-          name: [this.data.product.name, Validators.compose([Validators.required])],
-          categoryId: [this.data.product.categoryId.id, Validators.compose([Validators.required])]
+          name: [null , Validators.compose ( [ Validators.required ] )],
+          categoryId: [null , Validators.compose ( [ Validators.required ] )]
           });
     }
     
@@ -41,7 +45,7 @@ import { ListApiResponse } from "src/app/interfaces/listApi";
     getCategories() {
         this.categoriesService.getAllCategorias().subscribe(categoryList => {
             this.ListApi = categoryList;
-            this.categoryId = this.ListApi.rows;        
+            this.categories = this.ListApi.rows;        
           });
     }
     

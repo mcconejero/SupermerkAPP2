@@ -7,8 +7,6 @@ import { DialogEditCategoryComponent } from 'src/app/dialogs/dialog-edit-categor
 import { DialogDeleteCategoryComponent } from 'src/app/dialogs/dialog-delete-category/dialog-delete-category.component';
 import { ListApiResponse } from 'src/app/interfaces/listApi';
 
-const ELEMENT_DATA: Category[] = [];
-
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -22,7 +20,9 @@ export class CategoryComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private categoryService: CategoryService, public snackBar: MatSnackBar, public dialog: MatDialog) { }
+  constructor(private categoryService: CategoryService,
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getListaCategorias();
@@ -56,17 +56,21 @@ openDialogCrearCategoria(){
 }
 
 openDialogDeleteCategoria(id: number) {
-  const dialogDeleteCategory = this.dialog.open(DialogDeleteCategoryComponent, {data: {id: id}});
-
-  dialogDeleteCategory.afterClosed().subscribe(resultado =>{
-    this.getListaCategorias();
-  })
+  const dialogRemoveCategory = this.dialog.open(DialogDeleteCategoryComponent, {data: {id: id}});
+  
+  dialogRemoveCategory.afterClosed().subscribe(result => {
+      this.getListaCategorias();
+    });
 }
 
 openDialogEditarCategoria(element: Category){
   const dialogEditCategory = this.dialog.open(DialogEditCategoryComponent,{
     width:'30%',
-    data: {category:element},
+    data: {category:element}
+  });
+
+  dialogEditCategory.afterClosed().subscribe(result => {
+    this.getListaCategorias();
   });
 }
 }

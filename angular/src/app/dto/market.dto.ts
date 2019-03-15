@@ -1,9 +1,9 @@
 export class MarketDto {
-    id: string;
     name: string;
+    latlong: string
 
-    constructor(i: string, n: string){
-        this.id = i;
+    constructor(n: string, l: string){
         this.name = n;
+        this.latlong = l;
     }
 }

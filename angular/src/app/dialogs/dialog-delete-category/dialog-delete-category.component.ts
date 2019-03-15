@@ -22,7 +22,7 @@ export class DialogDeleteCategoryComponent implements OnInit {
   }
 
   removeCategoria() {
-    this.categoriaService.eliminarCategoria(this.data.id).subscribe(categorias => {
+    this.categoriaService.eliminarCategorias(this.data.id).subscribe(categorias => {
       this.dialogRef.close();
     }, error => {
       console.log(error);

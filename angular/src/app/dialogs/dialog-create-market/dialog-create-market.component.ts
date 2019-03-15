@@ -16,13 +16,16 @@ import { MarketService } from "src/app/services/market.service";
     markets: Market[];
     ListApi: ListApiResponse;
     public form: FormGroup;
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder, private marketService: MarketService, public dialogRef: MatDialogRef<DialogCreateMarketComponent>) { }
+    
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+    private fb: FormBuilder,
+    private marketService: MarketService,
+    public dialogRef: MatDialogRef<DialogCreateMarketComponent>) { }
 
     ngOnInit() {
-      this.markets = this.data.markets;
       this.form = this.fb.group({
-        name: [this.data.markets.name, Validators.compose([Validators.required])],
-        latlong: [this.data.markets.latlong, Validators.compose([Validators.required])]
+        name: [null , Validators.compose ( [ Validators.required ] )],
+        latlong: [null , Validators.compose ( [ Validators.required ] )]
     });
 
     }

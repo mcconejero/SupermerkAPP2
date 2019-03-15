@@ -38,6 +38,12 @@ const MENUITEMS = [
     name: 'PRODUCTS',
     type: 'link',
     icon: 'dns'
+  },
+  {
+    state: 'users',
+    name: 'USERS',
+    type: 'link',
+    icon: 'supervisor_account'
   }
 ];
 

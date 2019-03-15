@@ -21,11 +21,14 @@ export class DialogEditProductComponent implements OnInit {
   ListApi: ListApiResponse;
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router,
-    private categoriasService: CategoryService, private productService: ProductService, public dialogRef: MatDialogRef<DialogEditProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+  private fb: FormBuilder,
+  private categoriasService: CategoryService,
+  private productService: ProductService,
+  public dialogRef: MatDialogRef<DialogEditProductComponent>) { }
 
   ngOnInit() {
+    this.getCategorias()
     this.product = this.data.product;
     this.form = this.fb.group({
       name: [this.data.product.name, Validators.compose([Validators.required])],

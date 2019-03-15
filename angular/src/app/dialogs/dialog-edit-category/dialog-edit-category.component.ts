@@ -38,7 +38,7 @@ export class DialogEditCategoryComponent implements OnInit {
 
   saveCategory() {
     const categoryCreate: Category = <Category>this.form.value;
-    this.categoryService.updateCategory(categoryCreate, this.data.category.id).subscribe(
+    this.categoryService.updateCategorias(categoryCreate, this.data.category.id).subscribe(
       category => {
         this.dialogRef.close();
       }, error => {

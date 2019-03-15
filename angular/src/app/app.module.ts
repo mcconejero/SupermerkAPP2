@@ -52,6 +52,7 @@ import { DialogCreateMarketComponent } from './dialogs/dialog-create-market/dial
 import { DialogEditCategoryComponent } from './dialogs/dialog-edit-category/dialog-edit-category.component';
 import { DialogCreateCategoryComponent } from './dialogs/dialog-create-category/dialog-create-category.component';
 import { DialogDeleteCategoryComponent } from './dialogs/dialog-delete-category/dialog-delete-category.component';
+import { DialogDeleteUsuarioComponent } from './dialogs/dialog-eliminar-usuario/dialog-remove-usuario.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -86,6 +87,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DialogDeleteProductComponent,
     DialogRemoveMarketComponent,
     DialogDeleteCategoryComponent,
+    DialogDeleteUsuarioComponent
   ],
   entryComponents: [
     DialogCreateProductComponent,
@@ -97,6 +99,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DialogCreateCategoryComponent,
     DialogEditCategoryComponent,
     DialogDeleteCategoryComponent,
+    DialogDeleteUsuarioComponent
   ],
   imports: [
     BrowserModule,

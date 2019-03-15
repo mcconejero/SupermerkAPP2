@@ -14,6 +14,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
 import { MarketComponent } from './market/market.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,7 @@ import { MarketComponent } from './market/market.component';
     MatInputModule,
     MatSelectModule
   ],
-  declarations: [ DashboardComponent, ProductComponent, MarketComponent, CategoryComponent ]
+  declarations: [ DashboardComponent, ProductComponent, MarketComponent, CategoryComponent, UserComponent ]
 })
 
 export class DashboardModule {}

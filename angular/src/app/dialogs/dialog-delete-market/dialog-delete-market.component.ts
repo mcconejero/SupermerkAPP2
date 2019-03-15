@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject} from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { FormGroup, Validators, FormBuilder, FormControl } from "@angular/forms";
-import { ProductService } from "src/app/services/product.service";
+import { MarketService } from "src/app/services/market.service";
 
 @Component({
     selector: 'app-dialog-delete-market',
@@ -11,7 +11,7 @@ import { ProductService } from "src/app/services/product.service";
   export class DialogRemoveMarketComponent implements OnInit {
     public form: FormGroup;
   
-    constructor(private productService: ProductService, public dialogRef: MatDialogRef<DialogRemoveMarketComponent>,
+    constructor(private marketService: MarketService, public dialogRef: MatDialogRef<DialogRemoveMarketComponent>,
       @Inject(MAT_DIALOG_DATA) public data: any,) { }
   
     ngOnInit() {
@@ -20,8 +20,8 @@ import { ProductService } from "src/app/services/product.service";
         } );
     }
     
-    removeProduct() {
-        this.productService.deleteProducts(this.data.id).subscribe(usuarios => {
+    removeMarket() {
+        this.marketService.deleteMarket(this.data.id).subscribe(supermercados => {
             this.dialogRef.close();
           }, error => {
               console.log(error);

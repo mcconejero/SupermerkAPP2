@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { ProductService } from "../../services/product.service";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { FormGroup, Validators, FormBuilder, FormControl } from "@angular/forms";
+import { FormGroup, Validators, FormControl } from "@angular/forms";
 
 @Component({
   selector: 'app-dialog-delete-product',

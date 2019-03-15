@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from "src/environments/environment.prod";
 import { Market } from "../model/market";
 import { ListApiResponse } from "../interfaces/listApi";
+import { MarketDto } from "../dto/market.dto";
 
 const marketsUrl = `${environment.apiUrl}/markets`;
 
@@ -26,7 +27,7 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
     return this.http.get<ListApiResponse>(`${marketsUrl}`, requestOptions);
    }
 
-   marketCreate(market: Market):Observable<Market>{
+   marketCreate(market: MarketDto): Observable<Market>{
     const requestOptions={
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

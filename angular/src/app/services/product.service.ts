@@ -40,7 +40,7 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
     return this.http.post<ProductResponse>(`${productsUrl}`, productCreate, requestOptions);
   }
 
-  editProducts(product: Product, id: number): Observable<ProductResponse> {
+  editProducts(product: Product, id: number): Observable<Product> {
     const requestOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ constructor(private http: HttpClient, private loginService: LoginService) { }
       })
     };
 
-    return this.http.put<ProductResponse>(`${productsUrl}/${id}`, product, requestOptions);
+    return this.http.put<Product>(`${productsUrl}/${id}`, product, requestOptions);
 }
 
   deleteProducts(id: number): Observable<Product[]>{

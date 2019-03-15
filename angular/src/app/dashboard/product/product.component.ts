@@ -23,7 +23,9 @@ export class ProductComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private productService: ProductService,
-    public snackBar: MatSnackBar, public dialog: MatDialog, private fb: FormBuilder) { }
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    private fb: FormBuilder) { }
 
   ngOnInit() {
     this.getListaProducts();
@@ -48,17 +50,21 @@ applyFilter(filterValue: string) {
 }
 
 openDialogNewProduct() {
-  const dialogoNuevoRecurso = this.dialog.open(DialogCreateProductComponent);
+  const dialogoNuevoProduct = this.dialog.open(DialogCreateProductComponent);
 
-  dialogoNuevoRecurso.afterClosed().subscribe(result => {
+  dialogoNuevoProduct.afterClosed().subscribe(result => {
     this.getListaProducts();
   });
 }
 
 openDialogEditProduct(element: Product) {
-  const dialogEditCategory = this.dialog.open(DialogEditProductComponent,{
+  const dialogEditProduct = this.dialog.open(DialogEditProductComponent,{
     width:'30%',
-    data: {category:element},
+    data: {product:element},
+  });
+
+  dialogEditProduct.afterClosed().subscribe(result => {
+    this.getListaProducts();
   });
 }
 

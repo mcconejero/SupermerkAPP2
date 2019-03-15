@@ -1,9 +1,6 @@
 import { Component, OnInit, Inject} from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
-import { User } from "src/app/model/user";
-import { UsuarioCreateResponse } from "src/app/interfaces/user-response";
-import { UserService } from "src/app/services/user.service";
 import { Market } from "src/app/model/market";
 import { MarketService } from "src/app/services/market.service";
 import { ListApiResponse } from "src/app/interfaces/listApi";
@@ -36,7 +33,7 @@ import { ListApiResponse } from "src/app/interfaces/listApi";
   saveMarket() {
     const marketCreate: Market = <Market>this.form.value;
     this.marketService.updateMarket(marketCreate, this.data.market.id).subscribe(
-      category => {
+      market => {
         this.dialogRef.close();
       }, error => {
         console.log(error);

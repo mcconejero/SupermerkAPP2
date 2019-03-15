@@ -46,9 +46,9 @@ export class MarketComponent implements OnInit {
   }
 
   openDialogCrearMarket(){
-    const dialogNuevaCategoria = this.dialog.open(DialogCreateMarketComponent);
+    const dialogNuevoSupermercado = this.dialog.open(DialogCreateMarketComponent);
     
-    dialogNuevaCategoria.afterClosed().subscribe(resultado =>{
+    dialogNuevoSupermercado.afterClosed().subscribe(resultado =>{
       this.getListaMarket();
     })
   }
@@ -64,7 +64,11 @@ export class MarketComponent implements OnInit {
   openDialogEditarMarket(element: Market){
     const dialogEditMarket = this.dialog.open(DialogEditMarketComponent,{
       width:'30%',
-      data: {category:element},
+      data: {market:element},
+    });
+
+    dialogEditMarket.afterClosed().subscribe(result => {
+      this.getListaMarket();
     });
   }
 }

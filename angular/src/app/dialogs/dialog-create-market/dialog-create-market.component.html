@@ -1,12 +1,15 @@
-<div fxLayout="row" fxLayoutAlign="center center">
-  <h2>Añadir Supermercado </h2>
-</div>
-<div fxLayout="column" fxLayoutAlign="center center">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Name" [(ngModel)]="name">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Location" [(ngModel)]="latlong">
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="addMarket()">Crear</button>
-</div>
+<form [formGroup]="form" (ngSubmit)="addMarket()">
+  <div fxLayout="column" fxLayoutAlign="space-around">
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Name" [formControl]="form.controls['name']">
+      </mat-form-field>
+    </div>
+    <div class="pb-1">
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Location" [formControl]="form.controls['latlong']">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Crear</button>
+  </div>
+</form>
