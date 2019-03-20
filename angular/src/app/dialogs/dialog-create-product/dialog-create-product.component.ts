@@ -6,6 +6,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms"
 import { Category } from "src/app/interfaces/category-response";
 import { CategoryService } from "src/app/services/category.service";
 import { ListApiResponse } from "src/app/interfaces/listApi";
+import { Market } from "src/app/model/market";
+import { MarketService } from "src/app/services/market.service";
 
 @Component({
     selector: 'app-dialog-create-product',
@@ -17,6 +19,7 @@ import { ListApiResponse } from "src/app/interfaces/listApi";
     categoryId: string;
     product: Product[];
     categories: Category[];
+    markets: Market[];
     ListApi: ListApiResponse;
     public form: FormGroup;
   
@@ -24,13 +27,16 @@ import { ListApiResponse } from "src/app/interfaces/listApi";
     private fb: FormBuilder,
     private productService: ProductService,
     private categoriesService: CategoryService,
+    private marketService: MarketService,
     public dialogRef: MatDialogRef<DialogCreateProductComponent>,) { }
 
     ngOnInit() {
         this.getCategories();
+        this.getMarkets();
         this.form =  this.fb.group ( {
           name: [null , Validators.compose ( [ Validators.required ] )],
-          categoryId: [null , Validators.compose ( [ Validators.required ] )]
+          categoryId: [null , Validators.compose ( [ Validators.required ] )],
+          marketId: [null , Validators.compose ( [ Validators.required ] )]
           });
     }
     
@@ -48,5 +54,12 @@ import { ListApiResponse } from "src/app/interfaces/listApi";
             this.categories = this.ListApi.rows;        
           });
     }
+
+    getMarkets() {
+      this.marketService.getAllMarkets().subscribe(marketList => {
+          this.ListApi = marketList;
+          this.markets = this.ListApi.rows;        
+        });
+  }
     
 }

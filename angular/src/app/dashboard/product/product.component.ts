@@ -17,7 +17,7 @@ import { DialogDeleteProductComponent } from 'src/app/dialogs/dialog-delete-prod
 export class ProductComponent implements OnInit {
   ListApi: ListApiResponse;
   ProductResponse: Product[];
-  displayedColumns: string[] = ['name', 'category', 'acciones']
+  displayedColumns: string[] = ['name', 'category', 'market','acciones']
   dataSource = new MatTableDataSource<Product[]>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

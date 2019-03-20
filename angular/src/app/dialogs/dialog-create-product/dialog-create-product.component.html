@@ -14,6 +14,15 @@
         </mat-select>
       </mat-form-field>
     </div>
+    <div class="pb-1">
+      <mat-form-field>
+        <mat-select placeholder="Supermarkets" [formControl]="form.controls['marketId']">
+          <mat-option *ngFor="let m of markets" [value]="m.id">
+            {{m.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Crear</button>
   </div>
 </form>
