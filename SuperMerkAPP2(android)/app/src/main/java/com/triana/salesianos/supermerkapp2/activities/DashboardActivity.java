@@ -1,5 +1,6 @@
 package com.triana.salesianos.supermerkapp2.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -93,7 +94,7 @@ public class DashboardActivity extends AppCompatActivity
                     .replace(R.id.container, f)
                     .commit();
         } else if (id == R.id.nav_map) {
-
+            startActivity(new Intent(DashboardActivity.this, MapsActivity.class));
         } else if (id == R.id.nav_login) {
 
         }

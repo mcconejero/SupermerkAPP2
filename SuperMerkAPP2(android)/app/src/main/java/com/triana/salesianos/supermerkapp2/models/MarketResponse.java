@@ -15,15 +15,15 @@ public class MarketResponse implements Serializable {
     private String name;
     @SerializedName("latlong")
     @Expose
-    private String latlong;
+    private Number[] latlong;
     @SerializedName("categoryId")
     @Expose
     private String[] categoryId;
     @SerializedName("productId")
     @Expose
-    private ProductResponse[] productId;
+    private String[] productId;
 
-    public MarketResponse(String id, String name, String latlong, String[] categoryId, ProductResponse[] productId) {
+    public MarketResponse(String id, String name, Number[] latlong, String[] categoryId, String[] productId) {
         this.id = id;
         this.name = name;
         this.latlong = latlong;
@@ -47,11 +47,11 @@ public class MarketResponse implements Serializable {
         this.name = name;
     }
 
-    public String getLatlong() {
+    public Number[] getLatlong() {
         return latlong;
     }
 
-    public void setLatlong(String latlong) {
+    public void setLatlong(Number[] latlong) {
         this.latlong = latlong;
     }
 
@@ -63,11 +63,11 @@ public class MarketResponse implements Serializable {
         this.categoryId = categoryId;
     }
 
-    public ProductResponse[] getProductId() {
+    public String[] getProductId() {
         return productId;
     }
 
-    public void setProductId(ProductResponse[] productId) {
+    public void setProductId(String[] productId) {
         this.productId = productId;
     }
 }

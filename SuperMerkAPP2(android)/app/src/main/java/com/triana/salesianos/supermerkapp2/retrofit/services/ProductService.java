@@ -2,7 +2,6 @@ package com.triana.salesianos.supermerkapp2.retrofit.services;
 
 import com.triana.salesianos.supermerkapp2.models.ProductResponse;
 import com.triana.salesianos.supermerkapp2.models.ResponseContainer;
-import com.triana.salesianos.supermerkapp2.models.ResponseContainerTwo;
 
 import retrofit2.Call;
 import retrofit2.http.DELETE;

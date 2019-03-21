@@ -13,4 +13,10 @@ public interface MarketService {
     @GET("markets/{categoriaId}")
     Call<ResponseContainer<MarketResponse>> getListMarket(@Path("categoriaId") String categoriaId);
 
+    @GET("markets")
+    Call<ResponseContainer<MarketResponse>> getListMarkets();
+
+    @GET("markets/{id}")
+    Call<ResponseContainerTwo<MarketResponse>> getMarket(@Path("id") String id);
+
 }
