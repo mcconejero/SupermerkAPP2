@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.triana.salesianos.supermerkapp2.R;
 import com.triana.salesianos.supermerkapp2.UtilToken;
+import com.triana.salesianos.supermerkapp2.models.CategoryResponse;
+import com.triana.salesianos.supermerkapp2.models.MarketResponse;
 import com.triana.salesianos.supermerkapp2.models.ProductResponse;
 import com.triana.salesianos.supermerkapp2.models.ResponseContainer;
 import com.triana.salesianos.supermerkapp2.retrofit.generator.ServiceGenerator;
@@ -36,18 +38,20 @@ public class ProductFragment extends Fragment {
     private int mColumnCount = 1;
     private ProductFragment.OnListFragmentInteractionListener mListener;
     List<ProductResponse> product = new ArrayList<>();
-    String jwt, categoriaId, mercadoId;
+    String jwt;
+    CategoryResponse categoriaId;
+    MarketResponse mercadoId;
     ProductService service;
     MyProductRecyclerViewAdapter adapter;
 
-    public ProductFragment() {
-
-    }
-
     @SuppressLint("ValidFragment")
-    public ProductFragment(String idCategory, String idMarket) {
+    public ProductFragment(CategoryResponse idCategory, MarketResponse idMarket) {
         categoriaId = idCategory;
         mercadoId = idMarket;
+    }
+
+    public ProductFragment() {
+
     }
 
     public static ProductFragment newInstance(int columnCount) {
@@ -83,7 +87,7 @@ public class ProductFragment extends Fragment {
 
         service = ServiceGenerator.createService(ProductService.class);
 
-        Call<ResponseContainer<ProductResponse>> call = service.getListProduct();
+        Call<ResponseContainer<ProductResponse>> call = service.getListProduct(categoriaId.getId(), mercadoId.getId());
         call.enqueue(new Callback<ResponseContainer<ProductResponse>>() {
             @Override
             public void onResponse(Call<ResponseContainer<ProductResponse>> call, Response<ResponseContainer<ProductResponse>> response) {

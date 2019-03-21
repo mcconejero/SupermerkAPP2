@@ -12,7 +12,9 @@ import android.widget.TextView;
 import com.triana.salesianos.supermerkapp2.R;
 import com.triana.salesianos.supermerkapp2.activities.ProductActivity;
 import com.triana.salesianos.supermerkapp2.fragments.MarketFragment.OnListFragmentInteractionListener;
+import com.triana.salesianos.supermerkapp2.models.CategoryResponse;
 import com.triana.salesianos.supermerkapp2.models.MarketResponse;
+import com.triana.salesianos.supermerkapp2.models.ResponseContainer;
 import com.triana.salesianos.supermerkapp2.models.ResponseContainerTwo;
 import com.triana.salesianos.supermerkapp2.retrofit.generator.ServiceGenerator;
 import com.triana.salesianos.supermerkapp2.retrofit.services.MarketService;
@@ -30,11 +32,13 @@ public class MyMarketRecyclerViewAdapter extends RecyclerView.Adapter<MyMarketRe
     private final OnListFragmentInteractionListener mListener;
     Context ctx;
     MarketService service;
+    CategoryResponse idCat;
 
-    public MyMarketRecyclerViewAdapter(Context context, List<MarketResponse> items, OnListFragmentInteractionListener listener) {
+    public MyMarketRecyclerViewAdapter(Context context, List<MarketResponse> items, CategoryResponse id, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
         ctx = context;
+        idCat = id;
     }
 
     @Override
@@ -52,20 +56,19 @@ public class MyMarketRecyclerViewAdapter extends RecyclerView.Adapter<MyMarketRe
         holder.mConstraintLayout.setOnClickListener(v -> {
             System.out.println(holder.mItem.getId());
             service = ServiceGenerator.createService(MarketService.class);
-            Call<ResponseContainerTwo<MarketResponse>> callOne = service.getOneMarket(holder.mItem.getId());
-            callOne.enqueue(new Callback<ResponseContainerTwo<MarketResponse>>() {
+            Call<ResponseContainer<MarketResponse>> callOne = service.getListMarket(holder.mItem.getId());
+            callOne.enqueue(new Callback<ResponseContainer<MarketResponse>>() {
 
                 @Override
-                public void onResponse(Call<ResponseContainerTwo<MarketResponse>> call, Response<ResponseContainerTwo<MarketResponse>> response) {
-                    MarketResponse resp = response.body().getRows();
-                    Intent productActivity = new Intent(ctx , ProductActivity.class);
-                    productActivity.putExtra("mercadoId", mValues.get(position).getId());
-                    productActivity.putExtra("categoriaId", mValues.get(position).getCategoryId().getId());
-                    ctx.startActivity(productActivity);
+                public void onResponse(Call<ResponseContainer<MarketResponse>> call, Response<ResponseContainer<MarketResponse>> response) {
+                    Intent i = new Intent(ctx , ProductActivity.class);
+                    i.putExtra("mercadoId", holder.mItem);
+                    i.putExtra("categoriaId", idCat);
+                    ctx.startActivity(i);
                 }
 
                 @Override
-                public void onFailure(Call<ResponseContainerTwo<MarketResponse>> call, Throwable t) {
+                public void onFailure(Call<ResponseContainer<MarketResponse>> call, Throwable t) {
 
                 }
             });

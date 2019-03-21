@@ -6,10 +6,11 @@ import android.support.v7.widget.Toolbar;
 
 import com.triana.salesianos.supermerkapp2.R;
 import com.triana.salesianos.supermerkapp2.fragments.MarketFragment;
+import com.triana.salesianos.supermerkapp2.models.CategoryResponse;
 
 public class MarketActivity extends AppCompatActivity {
 
-    String categoriaId;
+    CategoryResponse categoriaId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +20,11 @@ public class MarketActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Bundle extras = getIntent().getExtras();
-        categoriaId = extras.getString("categoriaId");
+        categoriaId = (CategoryResponse) extras.getSerializable("categoriaId");
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.contenedor, new MarketFragment())
+                .add(R.id.contenedor, new MarketFragment(categoriaId))
                 .commit();
 
     }

@@ -18,12 +18,12 @@ public class MarketResponse implements Serializable {
     private String latlong;
     @SerializedName("categoryId")
     @Expose
-    private CategoryResponse categoryId;
+    private String[] categoryId;
     @SerializedName("productId")
     @Expose
-    private ProductResponse productId;
+    private ProductResponse[] productId;
 
-    public MarketResponse(String id, String name, String latlong, CategoryResponse categoryId, ProductResponse productId) {
+    public MarketResponse(String id, String name, String latlong, String[] categoryId, ProductResponse[] productId) {
         this.id = id;
         this.name = name;
         this.latlong = latlong;
@@ -35,44 +35,39 @@ public class MarketResponse implements Serializable {
         return id;
     }
 
-    public MarketResponse setId(String id) {
+    public void setId(String id) {
         this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public MarketResponse setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getLatlong() {
         return latlong;
     }
 
-    public MarketResponse setLatlong(String latlong) {
+    public void setLatlong(String latlong) {
         this.latlong = latlong;
-        return this;
     }
 
-    public CategoryResponse getCategoryId() {
+    public String[] getCategoryId() {
         return categoryId;
     }
 
-    public MarketResponse setCategoryId(CategoryResponse categoryId) {
+    public void setCategoryId(String[] categoryId) {
         this.categoryId = categoryId;
-        return this;
     }
 
-    public ProductResponse getProductId() {
+    public ProductResponse[] getProductId() {
         return productId;
     }
 
-    public MarketResponse setProductId(ProductResponse productId) {
+    public void setProductId(ProductResponse[] productId) {
         this.productId = productId;
-        return this;
     }
 }

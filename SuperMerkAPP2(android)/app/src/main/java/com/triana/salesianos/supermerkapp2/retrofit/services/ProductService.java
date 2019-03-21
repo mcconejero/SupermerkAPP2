@@ -13,9 +13,9 @@ import retrofit2.http.Path;
 public interface ProductService {
 
     @GET("products/{idCategory}/{idMarket}")
-    Call<ResponseContainerTwo<ProductResponse>> getListProduct();
+    Call<ResponseContainer<ProductResponse>> getListProduct(@Path("idCategory") String idCategory, @Path("idMarket") String idMarket);
 
-    @GET("products/fav")
+    @GET("products/favs")
     Call<ResponseContainer<ProductResponse>> getFavs();
 
     @POST("products/fav/{id}")

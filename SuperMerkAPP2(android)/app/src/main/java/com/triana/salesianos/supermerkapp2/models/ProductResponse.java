@@ -31,35 +31,31 @@ public class ProductResponse implements Serializable {
         return id;
     }
 
-    public ProductResponse setId(String id) {
+    public void setId(String id) {
         this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public ProductResponse setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public CategoryResponse getCategoryId() {
         return categoryId;
     }
 
-    public ProductResponse setCategoryId(CategoryResponse categoryId) {
+    public void setCategoryId(CategoryResponse categoryId) {
         this.categoryId = categoryId;
-        return this;
     }
 
     public MarketResponse getMarketId() {
         return marketId;
     }
 
-    public ProductResponse setMarketId(MarketResponse marketId) {
+    public void setMarketId(MarketResponse marketId) {
         this.marketId = marketId;
-        return this;
     }
 }

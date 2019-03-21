@@ -39,53 +39,47 @@ public class CategoryResponse implements Serializable {
         return id;
     }
 
-    public CategoryResponse setId(String id) {
+    public void setId(String id) {
         this.id = id;
-        return this;
     }
 
     public String getPicture() {
         return picture;
     }
 
-    public CategoryResponse setPicture(String picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public CategoryResponse setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public CategoryResponse setMessage(String message) {
+    public void setMessage(String message) {
         this.message = message;
-        return this;
     }
 
     public MarketResponse getMarketId() {
         return marketId;
     }
 
-    public CategoryResponse setMarketId(MarketResponse marketId) {
+    public void setMarketId(MarketResponse marketId) {
         this.marketId = marketId;
-        return this;
     }
 
     public String[] getProductId() {
         return productId;
     }
 
-    public CategoryResponse setProductId(String[] productId) {
+    public void setProductId(String[] productId) {
         this.productId = productId;
-        return this;
     }
 }

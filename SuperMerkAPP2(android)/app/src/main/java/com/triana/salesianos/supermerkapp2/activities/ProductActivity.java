@@ -1,18 +1,18 @@
 package com.triana.salesianos.supermerkapp2.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.triana.salesianos.supermerkapp2.R;
 import com.triana.salesianos.supermerkapp2.fragments.ProductFragment;
+import com.triana.salesianos.supermerkapp2.models.CategoryResponse;
+import com.triana.salesianos.supermerkapp2.models.MarketResponse;
 
 public class ProductActivity extends AppCompatActivity {
 
-    String mercadoId;
+    CategoryResponse categoriaId;
+    MarketResponse mercadoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +22,14 @@ public class ProductActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Bundle extras = getIntent().getExtras();
-        mercadoId = extras.getString("mercadoId");
+        categoriaId = (CategoryResponse) extras.getSerializable("categoriaId");
+
+        Bundle extras2 = getIntent().getExtras();
+        mercadoId = (MarketResponse) extras2.getSerializable("mercadoId");
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.contenedorProduct, new ProductFragment())
+                .replace(R.id.contenedorProduct, new ProductFragment(categoriaId, mercadoId))
                 .commit();
     }
 

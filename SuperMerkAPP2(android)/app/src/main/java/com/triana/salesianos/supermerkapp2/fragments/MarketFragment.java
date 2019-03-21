@@ -1,5 +1,6 @@
 package com.triana.salesianos.supermerkapp2.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -37,14 +38,19 @@ public class MarketFragment extends Fragment {
     private OnListFragmentInteractionListener mListener;
     List<MarketResponse> market = new ArrayList<>();
     String jwt;
+    CategoryResponse categoriaId, idCat;
     MarketService service;
     MyMarketRecyclerViewAdapter adapter;
 
     public MarketFragment() {
+
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
+    @SuppressLint("ValidFragment")
+    public MarketFragment(CategoryResponse idCategoria) {
+        categoriaId = idCategoria;
+    }
+
     public static MarketFragment newInstance(int columnCount) {
         MarketFragment fragment = new MarketFragment();
         Bundle args = new Bundle();
@@ -78,7 +84,7 @@ public class MarketFragment extends Fragment {
 
         service = ServiceGenerator.createService(MarketService.class);
 
-        Call<ResponseContainer<MarketResponse>> call = service.getListMarket();
+        Call<ResponseContainer<MarketResponse>> call = service.getListMarket(categoriaId.getId());
         call.enqueue(new Callback<ResponseContainer<MarketResponse>>() {
             @Override
             public void onResponse(Call<ResponseContainer<MarketResponse>> call, Response<ResponseContainer<MarketResponse>> response) {
@@ -86,8 +92,8 @@ public class MarketFragment extends Fragment {
                     Toast.makeText(getActivity(), "Error in request", Toast.LENGTH_SHORT).show();
                 } else {
                     market = response.body().getRows();
-
-                    adapter = new MyMarketRecyclerViewAdapter(context, market, mListener);
+                    idCat = categoriaId;
+                    adapter = new MyMarketRecyclerViewAdapter(context, market, idCat, mListener);
                     recyclerView.setAdapter(adapter);
                 }
             }

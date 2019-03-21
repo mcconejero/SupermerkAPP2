@@ -2,6 +2,7 @@ package com.triana.salesianos.supermerkapp2.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.triana.salesianos.supermerkapp2.R;
 import com.triana.salesianos.supermerkapp2.activities.MarketActivity;
+import com.triana.salesianos.supermerkapp2.activities.ProductActivity;
 import com.triana.salesianos.supermerkapp2.fragments.CategoryFragment.OnListFragmentInteractionListener;
 import com.triana.salesianos.supermerkapp2.models.CategoryResponse;
 import com.triana.salesianos.supermerkapp2.models.ResponseContainerTwo;
@@ -57,24 +59,9 @@ public class MyCategoryRecyclerViewAdapter extends RecyclerView.Adapter<MyCatego
                 .into(holder.mPhoto);
 
         holder.mConstraintLayout.setOnClickListener(v -> {
-            System.out.println(holder.mItem.getId());
-            service = ServiceGenerator.createService(CategoryService.class);
-            Call<ResponseContainerTwo<CategoryResponse>> callOne = service.getOneCategory(holder.mItem.getId());
-            callOne.enqueue(new Callback<ResponseContainerTwo<CategoryResponse>>() {
-
-                @Override
-                public void onResponse(Call<ResponseContainerTwo<CategoryResponse>> call, Response<ResponseContainerTwo<CategoryResponse>> response) {
-                    CategoryResponse resp = response.body().getRows();
-                    Intent marketActivity = new Intent(ctx , MarketActivity.class);
-                    marketActivity.putExtra("categoriaId", mValues.get(position).getId());
-                    ctx.startActivity(marketActivity);
-                }
-
-                @Override
-                public void onFailure(Call<ResponseContainerTwo<CategoryResponse>> call, Throwable t) {
-
-                }
-            });
+            Intent i = new Intent(ctx , MarketActivity.class);
+            i.putExtra("categoriaId", holder.mItem);
+            ctx.startActivity(i);
         });
 
     }

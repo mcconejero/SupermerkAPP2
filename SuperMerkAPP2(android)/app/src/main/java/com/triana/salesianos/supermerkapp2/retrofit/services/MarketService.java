@@ -10,10 +10,7 @@ import retrofit2.http.Path;
 
 public interface MarketService {
 
-    @GET("markets")
-    Call<ResponseContainer<MarketResponse>> getListMarket();
-
-    @GET("markets/{id}")
-    Call<ResponseContainerTwo<MarketResponse>> getOneMarket(@Path("id") String id);
+    @GET("markets/{categoriaId}")
+    Call<ResponseContainer<MarketResponse>> getListMarket(@Path("categoriaId") String categoriaId);
 
 }
