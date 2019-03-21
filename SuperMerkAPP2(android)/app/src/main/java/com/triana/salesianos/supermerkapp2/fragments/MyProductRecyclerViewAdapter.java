@@ -53,6 +53,7 @@ public class MyProductRecyclerViewAdapter extends RecyclerView.Adapter<MyProduct
         String jwt = UtilToken.getToken(ctx);
         holder.mItem = mValues.get(position);
         holder.mTitle.setText(mValues.get(position).getName());
+        holder.mMarket.setText(mValues.get(position).getMarketId().getName());
 
         holder.mFav.setOnClickListener(v -> {
 
@@ -125,6 +126,7 @@ public class MyProductRecyclerViewAdapter extends RecyclerView.Adapter<MyProduct
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mTitle;
+        public final TextView mMarket;
         public final ImageView mFav;
         public ProductResponse mItem;
 
@@ -132,6 +134,7 @@ public class MyProductRecyclerViewAdapter extends RecyclerView.Adapter<MyProduct
             super(view);
             mView = view;
             mTitle = view.findViewById(R.id.nameProduct);
+            mMarket = view.findViewById(R.id.nameMarket);
             mFav = view.findViewById(R.id.favProduct);
         }
 

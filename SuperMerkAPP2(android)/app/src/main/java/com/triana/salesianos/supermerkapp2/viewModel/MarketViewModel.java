@@ -6,6 +6,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.triana.salesianos.supermerkapp2.models.MarketMapResponse;
 import com.triana.salesianos.supermerkapp2.models.MarketResponse;
 import com.triana.salesianos.supermerkapp2.models.ResponseContainer;
 import com.triana.salesianos.supermerkapp2.models.ResponseContainerTwo;
@@ -20,8 +21,8 @@ import retrofit2.Response;
 
 public class MarketViewModel extends AndroidViewModel{
 
-    private MutableLiveData<List<MarketResponse>> listMarket = new MutableLiveData<List<MarketResponse>>();
-    private MutableLiveData<MarketResponse> market = new MutableLiveData<MarketResponse>();
+    private MutableLiveData<List<MarketMapResponse>> listMarket = new MutableLiveData<List<MarketMapResponse>>();
+    private MutableLiveData<MarketMapResponse> market = new MutableLiveData<MarketMapResponse>();
 
     private MarketService marketService;
 
@@ -32,12 +33,12 @@ public class MarketViewModel extends AndroidViewModel{
 
     public void getAllMarkets() {
         marketService = ServiceGenerator.createService(MarketService.class);
-        Call<ResponseContainer<MarketResponse>> call = marketService.getListMarkets();
-        call.enqueue(new Callback<ResponseContainer<MarketResponse>>() {
+        Call<ResponseContainer<MarketMapResponse>> call = marketService.getListMarkets();
+        call.enqueue(new Callback<ResponseContainer<MarketMapResponse>>() {
             @Override
-            public void onResponse(Call<ResponseContainer<MarketResponse>> call, Response<ResponseContainer<MarketResponse>> response) {
+            public void onResponse(Call<ResponseContainer<MarketMapResponse>> call, Response<ResponseContainer<MarketMapResponse>> response) {
                 try {
-                    ResponseContainer<MarketResponse> data = response.body();
+                    ResponseContainer<MarketMapResponse> data = response.body();
                     listMarket.setValue(data.getRows());
                 } catch (Exception e){
                     Log.d("onResponse", "Error here");
@@ -46,7 +47,7 @@ public class MarketViewModel extends AndroidViewModel{
             }
 
             @Override
-            public void onFailure(Call<ResponseContainer<MarketResponse>> call, Throwable t) {
+            public void onFailure(Call<ResponseContainer<MarketMapResponse>> call, Throwable t) {
                 Log.e("NetworkError", t.getMessage());
             }
         });
@@ -54,12 +55,12 @@ public class MarketViewModel extends AndroidViewModel{
 
     public void getMarketDetails(String id){
         marketService = ServiceGenerator.createService(MarketService.class);
-        Call<ResponseContainerTwo<MarketResponse>> call = marketService.getMarket(id);
-        call.enqueue(new Callback<ResponseContainerTwo<MarketResponse>>() {
+        Call<ResponseContainerTwo<MarketMapResponse>> call = marketService.getMarket(id);
+        call.enqueue(new Callback<ResponseContainerTwo<MarketMapResponse>>() {
             @Override
-            public void onResponse(Call<ResponseContainerTwo<MarketResponse>> call, Response<ResponseContainerTwo<MarketResponse>> response) {
+            public void onResponse(Call<ResponseContainerTwo<MarketMapResponse>> call, Response<ResponseContainerTwo<MarketMapResponse>> response) {
                 try {
-                    ResponseContainerTwo<MarketResponse> data = response.body();
+                    ResponseContainerTwo<MarketMapResponse> data = response.body();
                     market.setValue(data.getRows());
 
                 } catch (Exception e){
@@ -68,16 +69,16 @@ public class MarketViewModel extends AndroidViewModel{
             }
 
             @Override
-            public void onFailure(Call<ResponseContainerTwo<MarketResponse>> call, Throwable t) {
+            public void onFailure(Call<ResponseContainerTwo<MarketMapResponse>> call, Throwable t) {
                 Log.e("onFailureSetFav", t.getMessage());
             }
         });
     }
 
-    public MutableLiveData<List<MarketResponse>> getListMarket(){
+    public MutableLiveData<List<MarketMapResponse>> getListMarket(){
         return listMarket;
     }
-    public MutableLiveData<MarketResponse> getMarket(){
+    public MutableLiveData<MarketMapResponse> getMarket(){
         return market;
     }
 }

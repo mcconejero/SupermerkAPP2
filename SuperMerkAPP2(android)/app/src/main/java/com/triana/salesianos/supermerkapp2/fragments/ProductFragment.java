@@ -45,9 +45,8 @@ public class ProductFragment extends Fragment {
     MyProductRecyclerViewAdapter adapter;
 
     @SuppressLint("ValidFragment")
-    public ProductFragment(CategoryResponse idCategory, MarketResponse idMarket) {
+    public ProductFragment(CategoryResponse idCategory) {
         categoriaId = idCategory;
-        mercadoId = idMarket;
     }
 
     public ProductFragment() {
@@ -87,7 +86,7 @@ public class ProductFragment extends Fragment {
 
         service = ServiceGenerator.createService(ProductService.class);
 
-        Call<ResponseContainer<ProductResponse>> call = service.getListProduct(categoriaId.getId(), mercadoId.getId());
+        Call<ResponseContainer<ProductResponse>> call = service.getListProduct(categoriaId.getId());
         call.enqueue(new Callback<ResponseContainer<ProductResponse>>() {
             @Override
             public void onResponse(Call<ResponseContainer<ProductResponse>> call, Response<ResponseContainer<ProductResponse>> response) {

@@ -14,6 +14,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.triana.salesianos.supermerkapp2.R;
+import com.triana.salesianos.supermerkapp2.models.MarketMapResponse;
 import com.triana.salesianos.supermerkapp2.models.MarketResponse;
 import com.triana.salesianos.supermerkapp2.viewModel.MarketViewModel;
 
@@ -38,10 +39,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
-        viewModel.getListMarket().observe(this, new Observer<List<MarketResponse>>() {
+        viewModel.getListMarket().observe(this, new Observer<List<MarketMapResponse>>() {
             @Override
-            public void onChanged(@Nullable List<MarketResponse> markets) {
-                for (MarketResponse m : markets){
+            public void onChanged(@Nullable List<MarketMapResponse> markets) {
+                for (MarketMapResponse m : markets){
                     if (!m.getLatlong().isEmpty()){
                         if(m.getLatlong().contains(", ")){
                             String[] part = m.getLatlong().split(", ");

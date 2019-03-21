@@ -24,12 +24,12 @@ public class ProductActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         categoriaId = (CategoryResponse) extras.getSerializable("categoriaId");
 
-        Bundle extras2 = getIntent().getExtras();
-        mercadoId = (MarketResponse) extras2.getSerializable("mercadoId");
+        /*Bundle extras2 = getIntent().getExtras();
+        mercadoId = (MarketResponse) extras2.getSerializable("mercadoId");*/
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.contenedorProduct, new ProductFragment(categoriaId, mercadoId))
+                .replace(R.id.contenedorProduct, new ProductFragment(categoriaId))
                 .commit();
     }
 

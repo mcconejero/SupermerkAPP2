@@ -2,7 +2,6 @@ package com.triana.salesianos.supermerkapp2.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,19 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.triana.salesianos.supermerkapp2.R;
-import com.triana.salesianos.supermerkapp2.activities.MarketActivity;
 import com.triana.salesianos.supermerkapp2.activities.ProductActivity;
 import com.triana.salesianos.supermerkapp2.fragments.CategoryFragment.OnListFragmentInteractionListener;
 import com.triana.salesianos.supermerkapp2.models.CategoryResponse;
-import com.triana.salesianos.supermerkapp2.models.ResponseContainerTwo;
-import com.triana.salesianos.supermerkapp2.retrofit.generator.ServiceGenerator;
 import com.triana.salesianos.supermerkapp2.retrofit.services.CategoryService;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class MyCategoryRecyclerViewAdapter extends RecyclerView.Adapter<MyCategoryRecyclerViewAdapter.ViewHolder> {
@@ -58,8 +50,14 @@ public class MyCategoryRecyclerViewAdapter extends RecyclerView.Adapter<MyCatego
                 .load(mValues.get(position).getPicture())
                 .into(holder.mPhoto);
 
-        holder.mConstraintLayout.setOnClickListener(v -> {
+        /*holder.mConstraintLayout.setOnClickListener(v -> {
             Intent i = new Intent(ctx , MarketActivity.class);
+            i.putExtra("categoriaId", holder.mItem);
+            ctx.startActivity(i);
+        });*/
+
+        holder.mConstraintLayout.setOnClickListener(v -> {
+            Intent i = new Intent(ctx , ProductActivity.class);
             i.putExtra("categoriaId", holder.mItem);
             ctx.startActivity(i);
         });
