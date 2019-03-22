@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.triana.salesianos.supermerkapp2.R;
+import com.triana.salesianos.supermerkapp2.UtilToken;
 import com.triana.salesianos.supermerkapp2.fragments.CategoryFragment;
 import com.triana.salesianos.supermerkapp2.fragments.FavFragment;
 import com.triana.salesianos.supermerkapp2.fragments.ProductFragment;
@@ -78,25 +80,19 @@ public class DashboardActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
         Fragment f = null;
-
-        int id = item.getItemId();
-
-        if (id == R.id.nav_category) {
-            f = new CategoryFragment();
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, f)
-                    .commit();
-        } else if (id == R.id.nav_favourites) {
-            f = new FavFragment();
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, f)
-                    .commit();
-        } else if (id == R.id.nav_map) {
-            startActivity(new Intent(DashboardActivity.this, MapsActivity.class));
-        } else if (id == R.id.nav_login) {
-
+        switch (item.getItemId()) {
+            case R.id.nav_category:
+                f = new CategoryFragment();
+                break;
+            case R.id.nav_map:
+                startActivity(new Intent(DashboardActivity.this, MapsActivity.class));
+                break;
+            case R.id.nav_login:
+                UtilToken.setIdUser(DashboardActivity.this, null);
+                UtilToken.setToken(DashboardActivity.this, null);
+                startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
+                finish();
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -39,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
         etRepeatPassword = findViewById(R.id.etRPassword);
         cbCredentials = findViewById(R.id.cbCredentials);
         btnSignUp = findViewById(R.id.btnSignUp);
-        fabBack = findViewById(R.id.fabBack);
+        fabBack = findViewById(R.id.floatingActionButton);
 
         fabBack.setOnClickListener(new View.OnClickListener() {
             @Override

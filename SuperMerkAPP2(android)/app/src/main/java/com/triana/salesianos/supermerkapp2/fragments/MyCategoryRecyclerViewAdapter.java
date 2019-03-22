@@ -45,16 +45,6 @@ public class MyCategoryRecyclerViewAdapter extends RecyclerView.Adapter<MyCatego
         holder.mItem = mValues.get(position);
         holder.mTitle.setText(mValues.get(position).getName());
         holder.mMessage.setText(mValues.get(position).getMessage());
-        Glide
-                .with(ctx)
-                .load(mValues.get(position).getPicture())
-                .into(holder.mPhoto);
-
-        /*holder.mConstraintLayout.setOnClickListener(v -> {
-            Intent i = new Intent(ctx , MarketActivity.class);
-            i.putExtra("categoriaId", holder.mItem);
-            ctx.startActivity(i);
-        });*/
 
         holder.mConstraintLayout.setOnClickListener(v -> {
             Intent i = new Intent(ctx , ProductActivity.class);
@@ -75,13 +65,11 @@ public class MyCategoryRecyclerViewAdapter extends RecyclerView.Adapter<MyCatego
         public ConstraintLayout mConstraintLayout;
         public final TextView mTitle;
         public final TextView mMessage;
-        public final ImageView mPhoto;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mTitle = view.findViewById(R.id.nameProduct);
-            mPhoto = view.findViewById(R.id.picture);
             mMessage = view.findViewById(R.id.etMessage);
             mConstraintLayout = view.findViewById(R.id.constraint);
         }
